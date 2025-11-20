@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verification</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 60px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+  }
+
+  .timer-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #c7d6f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    background: #e7efff;
+  }
+
+  .timer-inner {
+    text-align: center;
+  }
+
+  .timer-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a73e8;
+    line-height: 1;
+  }
+
+  .timer-label {
+    font-size: 12px;
+    color: #777;
+    margin-top: 3px;
+  }
+
+  .btn {
+    padding: 12px 40px;
+    border-radius: 24px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: not-allowed;
+    background: #82aef5;
+    color: #fff;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn.active {
+    cursor: pointer;
+    background: #1a73e8;
+    box-shadow: 0 0 18px rgba(26, 115, 232, 0.55);
+  }
+</style>
+</head>
+<body>
+
+<h1 id="title">Please wait...</h1>
+
+<div class="timer-circle">
+  <div class="timer-inner">
+    <div id="secondsValue" class="timer-number">8</div>
+    <div class="timer-label">Seconds</div>
+  </div>
+</div>
+
+<button id="actionButton" class="btn" disabled>
+  Please wait...
+</button>
+
+<script>
+  let timeLeft = 8;
+
+  const secondsValue = document.getElementById("secondsValue");
+  const actionButton = document.getElementById("actionButton");
+  const title = document.getElementById("title");
+
+  const interval = setInterval(() => {
+    timeLeft--;
+    if (timeLeft < 0) timeLeft = 0;
+
+    secondsValue.textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      title.textContent = "Your link is almost ready.";
+      actionButton.textContent = "Get Link";
+      actionButton.disabled = false;
+      actionButton.classList.add("active");
+      actionButton.style.cursor = "pointer";
+    }
+  }, 1000);
+
+  actionButton.addEventListener("click", () => {
+    if (actionButton.disabled) return;
+
+    // Send signal to C# app (NO POPUP here)
+    try {
+      if (window.chrome && window.chrome.webview) {
+        window.chrome.webview.postMessage("verified");
+      }
+    } catch (e) {}
+  });
+</script>
+
+</body>
+</html>
