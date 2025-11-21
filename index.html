@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Granite Gaming Live Official</title>
+  <title>Granite Gaming Live – Channel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -14,9 +14,8 @@
     }
 
     body {
-      background: radial-gradient(circle at top, #020617 0, #020617 35%, #020014 100%);
-      color: #e5e7eb;
-      min-height: 100vh;
+      background: #0f0f0f;
+      color: #f1f1f1;
     }
 
     a {
@@ -24,339 +23,227 @@
       text-decoration: none;
     }
 
-    /* Animated neon background overlay */
-    .bg-glow {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.35), transparent 55%),
-        radial-gradient(circle at 80% 0%, rgba(236, 72, 153, 0.32), transparent 55%),
-        radial-gradient(circle at 50% 100%, rgba(56, 189, 248, 0.2), transparent 55%);
-      filter: blur(4px);
-      opacity: 0.9;
-      animation: glowMove 18s ease-in-out infinite alternate;
-    }
-
-    @keyframes glowMove {
-      0% { transform: translate3d(0, 0, 0) scale(1); }
-      50% { transform: translate3d(-10px, 10px, 0) scale(1.02); }
-      100% { transform: translate3d(10px, -10px, 0) scale(1.04); }
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     .page {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px 16px 60px;
+      background: #0f0f0f;
+      min-height: 100vh;
     }
 
-    /* Header / top bar */
-    .top-bar {
+    /* Banner */
+    .channel-banner {
+      position: relative;
+      height: 180px;
+      background: #202020;
+      overflow: hidden;
+    }
+
+    .channel-banner-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.75);
+    }
+
+    .banner-fallback {
+      height: 100%;
+      background: linear-gradient(90deg, #3f3f3f, #1f1f1f);
+    }
+
+    .channel-header {
+      padding: 16px 24px 12px;
+      background: #0f0f0f;
+    }
+
+    .channel-header-inner {
       display: flex;
+      gap: 16px;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 24px;
     }
 
-    .top-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .channel-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #303030;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
-      border: 2px solid rgba(244, 114, 182, 0.9);
-      box-shadow:
-        0 0 12px rgba(168, 85, 247, 0.8),
-        0 0 30px rgba(236, 72, 153, 0.9);
-      object-fit: cover;
+    .channel-main-info {
+      flex: 1;
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
+    .channel-title {
+      font-size: 24px;
+      font-weight: 600;
     }
 
-    .brand-name {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+    .channel-handle {
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 2px;
     }
 
-    .brand-tag {
-      font-size: 12px;
-      opacity: 0.7;
-    }
-
-    .top-right a {
+    .channel-stats {
       font-size: 13px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(8px);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      color: #aaa;
+      margin-top: 4px;
     }
 
-    /* Hero section */
-    .hero {
-      border-radius: 18px;
-      padding: 26px 20px 28px;
-      background:
-        linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9)),
-        radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.35), transparent 55%);
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      box-shadow:
-        0 20px 40px rgba(15, 23, 42, 0.9),
-        0 0 40px rgba(168, 85, 247, 0.45);
+    .channel-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
       align-items: center;
-      justify-content: space-between;
-    }
-
-    .hero-left {
-      flex: 1 1 260px;
-      text-align: left;
-    }
-
-    .hero-kicker {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #a855f7;
-      margin-bottom: 6px;
-    }
-
-    .hero-title {
-      font-size: 34px;
-      line-height: 1.1;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .hero-subtitle {
-      font-size: 15px;
-      opacity: 0.8;
-      max-width: 420px;
-    }
-
-    .hero-badges {
-      display: flex;
+      gap: 12px;
+      margin-top: 8px;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .badge {
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.25), transparent 55%);
-    }
-
-    .hero-cta {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
     }
 
     .btn-subscribe {
+      background: #f00;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #f97316, #ef4444);
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      border: none;
-      box-shadow:
-        0 0 18px rgba(239, 68, 68, 0.9),
-        0 0 40px rgba(236, 72, 153, 0.7);
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      gap: 6px;
     }
 
     .btn-subscribe:hover {
-      transform: translateY(-1px) scale(1.02);
-      filter: brightness(1.05);
-      box-shadow:
-        0 0 25px rgba(239, 68, 68, 1),
-        0 0 55px rgba(168, 85, 247, 0.9);
+      background: #cc0000;
     }
 
-    .btn-subscribe span.icon {
-      font-size: 17px;
-    }
-
-    .hero-meta {
-      font-size: 11px;
-      opacity: 0.75;
-    }
-
-    .hero-right {
-      flex: 0 0 220px;
-      text-align: center;
-    }
-
-    .hero-right-inner {
+    .btn-secondary {
       border-radius: 999px;
-      padding: 6px;
-      background:
-        conic-gradient(from 180deg, rgba(168, 85, 247, 0.9), rgba(236, 72, 153, 0.7), rgba(56, 189, 248, 0.7), rgba(168, 85, 247, 0.9));
-      box-shadow:
-        0 0 30px rgba(168, 85, 247, 0.9),
-        0 0 60px rgba(236, 72, 153, 0.8);
-      position: relative;
-    }
-
-    .hero-right-inner::after {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148, 163, 184, 0.55);
-      pointer-events: none;
-    }
-
-    .hero-avatar-wrap {
-      background: radial-gradient(circle at 30% 0, #0f172a, #020617);
-      border-radius: 999px;
-      padding: 10px;
-    }
-
-    .hero-avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 999px;
-      object-fit: cover;
-      border: 3px solid rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-right-text {
-      font-size: 11px;
-      margin-top: 10px;
-      opacity: 0.8;
-    }
-
-    /* Section title */
-    .section-title {
-      margin-top: 36px;
-      margin-bottom: 12px;
-      font-size: 18px;
-      font-weight: 700;
-      text-align: left;
-    }
-
-    .section-subtitle {
+      border: 1px solid #3f3f3f;
+      background: #181818;
+      color: #f1f1f1;
+      padding: 7px 14px;
       font-size: 13px;
-      opacity: 0.7;
-      text-align: left;
-      margin-bottom: 18px;
+      cursor: pointer;
     }
 
-    /* Player and grid */
-    .video-layout {
+    /* Tabs */
+    .tabs {
+      border-bottom: 1px solid #303030;
+      margin-top: 4px;
+    }
+
+    .tab-list {
+      display: flex;
+      gap: 16px;
+      padding: 0 24px;
+      overflow-x: auto;
+    }
+
+    .tab {
+      padding: 12px 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    /* Content area */
+    .content {
+      padding: 16px 24px 40px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Home tab layout */
+    .home-layout {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 20px;
-      align-items: flex-start;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr);
+      gap: 16px;
     }
 
     @media (max-width: 900px) {
-      .video-layout {
+      .home-layout {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .player-card {
-      border-radius: 16px;
-      padding: 10px;
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.95));
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.85);
-    }
-
-    #main-player {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: none;
+    .featured-card {
+      background: #181818;
       border-radius: 12px;
-      background: #020617;
+      padding: 12px;
     }
 
-    .now-playing-title {
-      margin-top: 10px;
-      font-size: 14px;
+    .featured-player {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+
+    .featured-meta {
+      margin-top: 8px;
+    }
+
+    .featured-title {
+      font-size: 16px;
       font-weight: 600;
     }
 
-    .now-playing-meta {
-      margin-top: 3px;
-      font-size: 11px;
-      opacity: 0.7;
+    .featured-extra {
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 4px;
     }
 
-    /* Video grid */
+    .featured-desc {
+      font-size: 13px;
+      color: #ccc;
+      margin-top: 6px;
+      max-height: 60px;
+      overflow: hidden;
+    }
+
+    .uploads-section-title {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
     .video-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 420px;
-      overflow-y: auto;
-      padding-right: 4px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
     }
 
     .video-card {
-      display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      gap: 10px;
-      padding: 8px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.2), rgba(15, 23, 42, 0.98));
-      border: 1px solid transparent;
       cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease, opacity 0.12s ease;
-      opacity: 0.88;
-    }
-
-    .video-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(236, 72, 153, 0.8);
-      box-shadow:
-        0 8px 20px rgba(15, 23, 42, 0.9),
-        0 0 22px rgba(168, 85, 247, 0.7);
-      opacity: 1;
-      background: radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.35), rgba(15, 23, 42, 1));
-    }
-
-    .video-card.active {
-      border-color: rgba(52, 211, 153, 0.8);
-      box-shadow:
-        0 0 18px rgba(52, 211, 153, 0.8),
-        0 0 30px rgba(168, 85, 247, 0.6);
-      opacity: 1;
     }
 
     .video-thumb-wrap {
       position: relative;
       border-radius: 10px;
       overflow: hidden;
+      background: #000;
     }
 
     .video-thumb {
@@ -364,410 +251,561 @@
       display: block;
     }
 
-    .thumb-overlay {
+    .video-length {
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0) 0, rgba(15, 23, 42, 0.9) 100%);
-      opacity: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.12s ease;
-    }
-
-    .video-card:hover .thumb-overlay {
-      opacity: 1;
-    }
-
-    .play-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      right: 6px;
+      bottom: 4px;
+      background: rgba(0, 0, 0, 0.85);
+      color: #f1f1f1;
       font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-
-    .play-pill span.icon {
-      font-size: 14px;
-    }
-
-    .video-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
+      padding: 2px 4px;
+      border-radius: 3px;
     }
 
     .video-title {
       font-size: 13px;
-      font-weight: 600;
-      line-height: 1.3;
+      font-weight: 500;
+      margin-top: 6px;
     }
 
     .video-meta {
-      font-size: 11px;
-      opacity: 0.75;
-    }
-
-    .error-message {
-      margin-top: 12px;
-      color: #fca5a5;
       font-size: 12px;
+      color: #aaa;
+      margin-top: 2px;
     }
 
-    /* About section */
-    .about {
-      margin-top: 42px;
-      border-radius: 16px;
-      padding: 18px 16px 22px;
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.95));
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.9);
+    /* Videos tab */
+    .videos-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr);
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+    }
+
+    /* Playlists tab */
+    .playlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+    }
+
+    .playlist-card {
+      background: #181818;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .playlist-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .playlist-count {
+      position: absolute;
+      bottom: 4px;
+      right: 6px;
+      background: rgba(0, 0, 0, 0.75);
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #f1f1f1;
+    }
+
+    .playlist-info {
+      padding: 8px 10px 10px;
+    }
+
+    .playlist-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .playlist-meta {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    /* About tab */
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
       gap: 16px;
     }
 
     @media (max-width: 800px) {
-      .about {
+      .about-layout {
         grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .about-text {
-      text-align: left;
-      font-size: 14px;
-      opacity: 0.9;
+    .about-description {
+      background: #181818;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 13px;
+      white-space: pre-wrap;
     }
 
-    .about-text p + p {
-      margin-top: 8px;
-    }
-
-    .about-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .about-tag {
-      font-size: 11px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-    }
-
-    .about-links {
-      text-align: left;
+    .about-stats {
+      background: #181818;
+      border-radius: 10px;
+      padding: 12px;
       font-size: 13px;
     }
 
-    .link-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 12px;
-      margin-bottom: 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: radial-gradient(circle at 0 0, rgba(236, 72, 153, 0.2), rgba(15, 23, 42, 0.98));
-      font-size: 12px;
-    }
-
-    .link-pill span.icon {
+    .about-stats h4 {
       font-size: 14px;
+      margin-bottom: 8px;
     }
 
-    footer {
-      margin-top: 28px;
-      font-size: 11px;
-      text-align: center;
-      opacity: 0.6;
+    .about-stat-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+      color: #ddd;
+    }
+
+    .small-label {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    /* Messages */
+    .error-message {
+      font-size: 13px;
+      color: #f88;
+      margin-top: 12px;
+    }
+
+    .loading-message {
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 12px;
     }
   </style>
 </head>
-
 <body>
-  <div class="bg-glow"></div>
-
   <div class="page">
-    <!-- Top bar -->
-    <div class="top-bar">
-      <div class="top-left">
-        <!-- Your logo file: logo.png in same folder as index.html -->
-        <img src="logo.png" alt="Granite Gaming Logo" class="logo">
-        <div class="brand-text">
-          <div class="brand-name">Granite Gaming</div>
-          <div class="brand-tag">@granitegamingliveofficial</div>
-        </div>
-      </div>
-      <div class="top-right">
-        <a href="https://www.youtube.com/@granitegamingliveofficial" target="_blank" rel="noopener">
-          OPEN CHANNEL ON YOUTUBE
-        </a>
+    <!-- Banner -->
+    <div class="channel-banner">
+      <div id="banner-bg" class="channel-banner-bg">
+        <div class="banner-fallback"></div>
       </div>
     </div>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-left">
-        <div class="hero-kicker">LIVE • BGMI • EMULATOR • TUTORIALS</div>
-        <h1 class="hero-title">Granite Gaming Live Official</h1>
-        <p class="hero-subtitle">
-          Watch high-intensity BGMI gameplay, emulator configs, and live streams.
-          Tune in, learn new tricks, and push your game to the next level. 💥
-        </p>
-
-        <div class="hero-badges">
-          <div class="badge">BGMI &amp; Emulator Focused</div>
-          <div class="badge">Custom Configs &amp; Tweaks</div>
-          <div class="badge">Live Chat With Viewers</div>
+    <!-- Channel header -->
+    <header class="channel-header">
+      <div class="channel-header-inner">
+        <div class="channel-avatar">
+          <img id="channel-avatar" src="" alt="Channel avatar">
         </div>
+        <div class="channel-main-info">
+          <div id="channel-title" class="channel-title">Granite Gaming</div>
+          <div id="channel-handle" class="channel-handle">@granitegamingliveofficial</div>
+          <div id="channel-stats" class="channel-stats">Loading stats…</div>
 
-        <div class="hero-cta">
-          <a
-            href="https://www.youtube.com/@granitegamingliveofficial?sub_confirmation=1"
-            target="_blank"
-            rel="noopener"
-            class="btn-subscribe"
-          >
-            <span class="icon">🔴</span>
-            <span>Subscribe on YouTube</span>
-          </a>
-          <div class="hero-meta">Join the squad &amp; never miss a stream.</div>
-        </div>
-      </div>
+          <div class="channel-actions">
+            <a
+              href="https://www.youtube.com/@granitegamingliveofficial?sub_confirmation=1"
+              target="_blank"
+              rel="noopener"
+            >
+              <button class="btn-subscribe">
+                <span>🔴</span>
+                <span>Subscribe</span>
+              </button>
+            </a>
 
-      <div class="hero-right">
-        <div class="hero-right-inner">
-          <div class="hero-avatar-wrap">
-            <img src="logo.png" alt="Granite Gaming Avatar" class="hero-avatar">
+            <a
+              href="https://www.youtube.com/@granitegamingliveofficial"
+              target="_blank"
+              rel="noopener"
+            >
+              <button class="btn-secondary">View on YouTube</button>
+            </a>
           </div>
         </div>
-        <div class="hero-right-text">
-          Built for gamers who want smoother aim, cleaner visuals, and smarter plays.
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="tabs">
+      <div class="tab-list">
+        <div class="tab active" data-tab="home">Home</div>
+        <div class="tab" data-tab="videos">Videos</div>
+        <div class="tab" data-tab="playlists">Playlists</div>
+        <div class="tab" data-tab="about">About</div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="content">
+      <!-- Home tab -->
+      <section id="tab-home" class="tab-content active">
+        <div class="home-layout">
+          <!-- Featured -->
+          <div class="featured-card">
+            <div class="featured-player">
+              <iframe
+                id="featured-player"
+                src=""
+                allowfullscreen
+                title="Featured video"
+                style="width:100%;height:100%;border:none;"
+              ></iframe>
+            </div>
+            <div class="featured-meta">
+              <div id="featured-title" class="featured-title">Loading featured video…</div>
+              <div id="featured-extra" class="featured-extra"></div>
+              <div id="featured-desc" class="featured-desc"></div>
+            </div>
+          </div>
+
+          <!-- Latest uploads -->
+          <div>
+            <div class="uploads-section-title">Latest uploads</div>
+            <div id="home-uploads" class="video-grid"></div>
+            <div id="home-error" class="error-message"></div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Latest videos -->
-    <h2 class="section-title">🎮 Latest Uploads</h2>
-    <p class="section-subtitle">
-      These are your <strong>6 most recent videos</strong> fetched live from YouTube using the official API.
-      Click any card to start playing it in the main player.
-    </p>
+      <!-- Videos tab -->
+      <section id="tab-videos" class="tab-content">
+        <div class="uploads-section-title" style="margin-bottom:10px;">All recent videos</div>
+        <div id="videos-grid" class="videos-grid"></div>
+        <div id="videos-error" class="error-message"></div>
+      </section>
 
-    <section class="video-layout">
-      <!-- Main player -->
-      <div class="player-card">
-        <iframe
-          id="main-player"
-          src=""
-          allowfullscreen
-          title="Granite Gaming Video Player"
-        ></iframe>
-        <div class="now-playing-title" id="now-title">Loading latest video…</div>
-        <div class="now-playing-meta" id="now-meta"></div>
-      </div>
+      <!-- Playlists tab -->
+      <section id="tab-playlists" class="tab-content">
+        <div class="uploads-section-title" style="margin-bottom:10px;">Playlists</div>
+        <div id="playlists-grid" class="playlist-grid"></div>
+        <div id="playlists-error" class="error-message"></div>
+      </section>
 
-      <!-- Video list -->
-      <div>
-        <div id="video-grid" class="video-grid"></div>
-        <div id="error" class="error-message"></div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="about">
-      <div class="about-text">
-        <h3 style="font-size:15px; margin-bottom:6px;">📌 About Granite Gaming</h3>
-        <p>
-          Granite Gaming is all about BGMI, emulator optimization, and real-talk gameplay.
-          From live ranked pushes to testing configs and sensitivity tweaks, everything is tuned for competitive fun.
-        </p>
-        <p>
-          Whether you’re here to learn, chill in chat, or grind with the squad,
-          you’re part of the Granite community the moment you hit subscribe. 💜
-        </p>
-
-        <div class="about-tags">
-          <span class="about-tag">BGMI</span>
-          <span class="about-tag">Emulator Tweaks</span>
-          <span class="about-tag">Live Streaming</span>
-          <span class="about-tag">Config Guides</span>
-          <span class="about-tag">PC &amp; Mobile</span>
+      <!-- About tab -->
+      <section id="tab-about" class="tab-content">
+        <div class="about-layout">
+          <div>
+            <div class="uploads-section-title" style="margin-bottom:6px;">Description</div>
+            <div id="about-description" class="about-description">
+              Loading description…
+            </div>
+          </div>
+          <div>
+            <div class="uploads-section-title" style="margin-bottom:6px;">Stats</div>
+            <div id="about-stats" class="about-stats">
+              <h4>Channel details</h4>
+              <div class="small-label">Loading…</div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="about-links">
-        <h3 style="font-size:15px; margin-bottom:6px;">🌐 Connect with Granite</h3>
-
-        <a
-          href="https://www.youtube.com/@granitegamingliveofficial"
-          target="_blank"
-          rel="noopener"
-          class="link-pill"
-        >
-          <span class="icon">▶️</span>
-          <span>YouTube Channel</span>
-        </a>
-        <br>
-
-        <a
-          href="https://instagram.com/granite_gaming_2617"
-          target="_blank"
-          rel="noopener"
-          class="link-pill"
-        >
-          <span class="icon">📸</span>
-          <span>Instagram @granite_gaming_2617</span>
-        </a>
-
-        <p style="margin-top:10px; font-size:12px; opacity:0.8;">
-          Share this page with friends who love BGMI &amp; high-aim gameplay –
-          the more we are, the crazier the lobbies get. 😈
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      © 2025 Granite Gaming — All Rights Reserved
-    </footer>
+      </section>
+    </main>
   </div>
 
-  <!-- YouTube Data API logic -->
   <script>
-    // Your YouTube Data API key (old key you told me to use)
+    // Your existing API key and channel ID
     const API_KEY = "AIzaSyC7ycK7o16iDpsNKtiDBhacnasPNuJFfts";
     const CHANNEL_ID = "UC6hx173NkZ5Ehy1ftJ6Y-ow";
-    const MAX_RESULTS = 6;
 
-    const player = document.getElementById("main-player");
-    const grid = document.getElementById("video-grid");
-    const errorBox = document.getElementById("error");
-    const nowTitle = document.getElementById("now-title");
-    const nowMeta = document.getElementById("now-meta");
+    // DOM refs
+    const bannerBg = document.getElementById("banner-bg");
+    const avatarImg = document.getElementById("channel-avatar");
+    const titleEl = document.getElementById("channel-title");
+    const handleEl = document.getElementById("channel-handle");
+    const statsEl = document.getElementById("channel-stats");
+    const aboutDescEl = document.getElementById("about-description");
+    const aboutStatsEl = document.getElementById("about-stats");
 
-    let currentActiveCard = null;
+    const featuredPlayer = document.getElementById("featured-player");
+    const featuredTitleEl = document.getElementById("featured-title");
+    const featuredExtraEl = document.getElementById("featured-extra");
+    const featuredDescEl = document.getElementById("featured-desc");
 
-    async function loadVideos() {
+    const homeUploadsEl = document.getElementById("home-uploads");
+    const homeErrorEl = document.getElementById("home-error");
+    const videosGridEl = document.getElementById("videos-grid");
+    const videosErrorEl = document.getElementById("videos-error");
+    const playlistsGridEl = document.getElementById("playlists-grid");
+    const playlistsErrorEl = document.getElementById("playlists-error");
+
+    // Tabs
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+        tab.classList.add("active");
+        const target = tab.getAttribute("data-tab");
+        document.getElementById("tab-" + target).classList.add("active");
+      });
+    });
+
+    function formatNumber(n) {
+      const num = Number(n);
+      if (isNaN(num)) return n;
+      if (num >= 1_000_000) return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+      if (num >= 1_000) return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
+      return num.toString();
+    }
+
+    function formatDate(d) {
+      const date = new Date(d);
+      if (!d || isNaN(date.getTime())) return "";
+      return date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    async function fetchChannelInfo() {
+      try {
+        const url =
+          "https://www.googleapis.com/youtube/v3/channels" +
+          "?part=snippet,brandingSettings,statistics" +
+          "&id=" + encodeURIComponent(CHANNEL_ID) +
+          "&key=" + encodeURIComponent(API_KEY);
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        if (!data.items || data.items.length === 0) {
+          statsEl.textContent = "Channel not found.";
+          return;
+        }
+        const ch = data.items[0];
+        const snippet = ch.snippet || {};
+        const branding = (ch.brandingSettings || {}).image || {};
+        const stats = ch.statistics || {};
+
+        // Title & handle
+        titleEl.textContent = snippet.title || "Channel";
+        handleEl.textContent =
+          snippet.customUrl ? "@" + snippet.customUrl.replace(/^@/, "") : "@granitegamingliveofficial";
+
+        // Avatar
+        const thumb = snippet.thumbnails || {};
+        const avatarUrl =
+          (thumb.high && thumb.high.url) ||
+          (thumb.medium && thumb.medium.url) ||
+          (thumb.default && thumb.default.url) ||
+          "";
+        if (avatarUrl) {
+          avatarImg.src = avatarUrl;
+        } else {
+          avatarImg.alt = "No avatar";
+        }
+
+        // Banner
+        if (branding.bannerExternalUrl) {
+          bannerBg.style.backgroundImage = "url('" + branding.bannerExternalUrl + "=w1707-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj')";
+        } else {
+          // fallback gradient already in CSS
+        }
+
+        // Stats text
+        const subs = stats.subscriberCount ? formatNumber(stats.subscriberCount) + " subscribers" : "";
+        const videos = stats.videoCount ? formatNumber(stats.videoCount) + " videos" : "";
+        const joinDate = snippet.publishedAt ? "Joined " + formatDate(snippet.publishedAt) : "";
+
+        statsEl.textContent = [subs, videos, joinDate].filter(Boolean).join(" • ");
+
+        // About description
+        aboutDescEl.textContent = snippet.description || "No description available.";
+
+        // About stats box
+        aboutStatsEl.innerHTML = `
+          <h4>Channel details</h4>
+          <div class="about-stat-row">
+            <span>Total subscribers</span>
+            <span>${subs || "—"}</span>
+          </div>
+          <div class="about-stat-row">
+            <span>Total videos</span>
+            <span>${videos || "—"}</span>
+          </div>
+          <div class="about-stat-row">
+            <span>Channel created</span>
+            <span>${joinDate || "—"}</span>
+          </div>
+        `;
+      } catch (err) {
+        console.error(err);
+        statsEl.textContent = "Failed to load channel info.";
+        aboutDescEl.textContent = "Failed to load channel description.";
+        aboutStatsEl.innerHTML = `
+          <h4>Channel details</h4>
+          <div class="small-label">Error loading stats.</div>
+        `;
+      }
+    }
+
+    async function fetchVideos() {
       try {
         const url =
           "https://www.googleapis.com/youtube/v3/search" +
           "?key=" + encodeURIComponent(API_KEY) +
           "&channelId=" + encodeURIComponent(CHANNEL_ID) +
-          "&part=snippet,id" +
+          "&part=snippet" +
           "&order=date" +
           "&type=video" +
-          "&maxResults=" + MAX_RESULTS;
+          "&maxResults=12";
 
         const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error("HTTP error " + res.status);
-        }
-
+        if (!res.ok) throw new Error("HTTP " + res.status);
         const data = await res.json();
-
-        if (!data.items || data.items.length === 0) {
-          errorBox.textContent = "No videos found for this channel.";
+        const items = data.items || [];
+        if (items.length === 0) {
+          homeErrorEl.textContent = "No videos found.";
+          videosErrorEl.textContent = "No videos found.";
           return;
         }
 
-        grid.innerHTML = "";
-        errorBox.textContent = "";
+        // Featured video = first one
+        const featured = items[0];
+        const fId = featured.id.videoId;
+        const fSnip = featured.snippet;
 
-        // Set first video as default
-        const first = data.items[0];
-        const firstId = first.id.videoId;
-        setMainVideo(firstId, first);
+        featuredPlayer.src = "https://www.youtube.com/embed/" + encodeURIComponent(fId);
+        featuredTitleEl.textContent = fSnip.title;
+        featuredExtraEl.textContent = formatDate(fSnip.publishedAt);
+        featuredDescEl.textContent = fSnip.description || "";
 
-        data.items.forEach((item, index) => {
+        // Home latest uploads = next 5
+        homeUploadsEl.innerHTML = "";
+        items.slice(1, 6).forEach(item => {
           const vidId = item.id.videoId;
-          const snippet = item.snippet;
-          const thumbUrl = (snippet.thumbnails.medium && snippet.thumbnails.medium.url) ||
-                           (snippet.thumbnails.default && snippet.thumbnails.default.url) ||
-                           "";
-          const title = snippet.title;
-          const publishedAt = new Date(snippet.publishedAt);
-          const dateStr = publishedAt.toLocaleDateString(undefined, {
-            year: "numeric",
-            month: "short",
-            day: "numeric"
-          });
+          const s = item.snippet;
+          const t = s.thumbnails || {};
+          const thumbUrl =
+            (t.medium && t.medium.url) ||
+            (t.high && t.high.url) ||
+            (t.default && t.default.url) ||
+            "";
 
           const card = document.createElement("div");
           card.className = "video-card";
-          if (index === 0) {
-            card.classList.add("active");
-            currentActiveCard = card;
-          }
-
           card.innerHTML = `
             <div class="video-thumb-wrap">
-              <img class="video-thumb" src="${thumbUrl}" alt="${title}">
-              <div class="thumb-overlay">
-                <div class="play-pill">
-                  <span class="icon">▶</span>
-                  <span>Play</span>
-                </div>
-              </div>
+              <img class="video-thumb" src="${thumbUrl}" alt="${s.title}">
+              <div class="video-length">Video</div>
             </div>
-            <div class="video-info">
-              <div class="video-title">${title}</div>
-              <div class="video-meta">${dateStr}</div>
+            <div class="video-title">${s.title}</div>
+            <div class="video-meta">${formatDate(s.publishedAt)}</div>
+          `;
+          card.addEventListener("click", () => {
+            featuredPlayer.src = "https://www.youtube.com/embed/" + encodeURIComponent(vidId);
+            featuredTitleEl.textContent = s.title;
+            featuredExtraEl.textContent = formatDate(s.publishedAt);
+            featuredDescEl.textContent = s.description || "";
+            // scroll to top of player on mobile
+            document.querySelector(".featured-card").scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+          homeUploadsEl.appendChild(card);
+        });
+
+        // Videos tab grid = all 12
+        videosGridEl.innerHTML = "";
+        items.forEach(item => {
+          const vidId = item.id.videoId;
+          const s = item.snippet;
+          const t = s.thumbnails || {};
+          const thumbUrl =
+            (t.medium && t.medium.url) ||
+            (t.high && t.high.url) ||
+            (t.default && t.default.url) ||
+            "";
+
+          const card = document.createElement("div");
+          card.className = "video-card";
+          card.innerHTML = `
+            <div class="video-thumb-wrap">
+              <img class="video-thumb" src="${thumbUrl}" alt="${s.title}">
+              <div class="video-length">Video</div>
+            </div>
+            <div class="video-title">${s.title}</div>
+            <div class="video-meta">${formatDate(s.publishedAt)}</div>
+          `;
+          card.addEventListener("click", () => {
+            featuredPlayer.src = "https://www.youtube.com/embed/" + encodeURIComponent(vidId);
+            featuredTitleEl.textContent = s.title;
+            featuredExtraEl.textContent = formatDate(s.publishedAt);
+            featuredDescEl.textContent = s.description || "";
+            // switch to Home or stay in Videos (you can change if you want)
+            document.querySelector('[data-tab="home"]').click();
+          });
+          videosGridEl.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error(err);
+        homeErrorEl.textContent = "Failed to load videos.";
+        videosErrorEl.textContent = "Failed to load videos.";
+      }
+    }
+
+    async function fetchPlaylists() {
+      try {
+        const url =
+          "https://www.googleapis.com/youtube/v3/playlists" +
+          "?key=" + encodeURIComponent(API_KEY) +
+          "&channelId=" + encodeURIComponent(CHANNEL_ID) +
+          "&part=snippet,contentDetails" +
+          "&maxResults=12";
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        const items = data.items || [];
+        if (items.length === 0) {
+          playlistsErrorEl.textContent = "No playlists found.";
+          return;
+        }
+
+        playlistsGridEl.innerHTML = "";
+        items.forEach(pl => {
+          const s = pl.snippet;
+          const t = s.thumbnails || {};
+          const thumbUrl =
+            (t.medium && t.medium.url) ||
+            (t.high && t.high.url) ||
+            (t.default && t.default.url) ||
+            "";
+          const count = (pl.contentDetails && pl.contentDetails.itemCount) || 0;
+          const playlistId = pl.id;
+
+          const card = document.createElement("div");
+          card.className = "playlist-card";
+          card.innerHTML = `
+            <div class="playlist-thumb">
+              <img src="${thumbUrl}" alt="${s.title}">
+              <div class="playlist-count">${count} videos</div>
+            </div>
+            <div class="playlist-info">
+              <div class="playlist-title">${s.title}</div>
+              <div class="playlist-meta">View full playlist</div>
             </div>
           `;
-
           card.addEventListener("click", () => {
-            setMainVideo(vidId, item);
-            if (currentActiveCard) {
-              currentActiveCard.classList.remove("active");
-            }
-            card.classList.add("active");
-            currentActiveCard = card;
-
-            if (window.innerWidth < 900) {
-              document.querySelector(".player-card").scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-              });
-            }
+            window.open("https://www.youtube.com/playlist?list=" + encodeURIComponent(playlistId), "_blank");
           });
-
-          grid.appendChild(card);
+          playlistsGridEl.appendChild(card);
         });
       } catch (err) {
         console.error(err);
-        errorBox.textContent =
-          "Failed to load videos. Check your API key, quota, and browser console for details.";
+        playlistsErrorEl.textContent = "Failed to load playlists.";
       }
     }
 
-    function setMainVideo(videoId, item) {
-      player.src = "https://www.youtube.com/embed/" + encodeURIComponent(videoId);
-      if (item && item.snippet) {
-        nowTitle.textContent = item.snippet.title || "Now Playing";
-        const publishedAt = new Date(item.snippet.publishedAt);
-        const dateStr = publishedAt.toLocaleDateString(undefined, {
-          year: "numeric",
-          month: "short",
-          day: "numeric"
-        });
-        nowMeta.textContent = "Uploaded: " + dateStr;
-      } else {
-        nowTitle.textContent = "Now Playing";
-        nowMeta.textContent = "";
-      }
-    }
-
-    loadVideos();
+    // Init
+    fetchChannelInfo();
+    fetchVideos();
+    fetchPlaylists();
   </script>
 </body>
 </html>
