@@ -10,100 +10,764 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
-      background: #0d0d0d;
-      color: white;
-      text-align: center;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #020014 100%);
+      color: #e5e7eb;
+      min-height: 100vh;
     }
 
-    header {
-      padding: 60px 20px;
-      background: linear-gradient(120deg, #7b2ff7, #f107a3);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    header h1 {
-      font-size: 48px;
-      font-weight: 700;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 18px;
+    /* Animated neon background overlay */
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.35), transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(236, 72, 153, 0.32), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(56, 189, 248, 0.2), transparent 55%);
+      filter: blur(4px);
       opacity: 0.9;
+      animation: glowMove 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowMove {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-10px, 10px, 0) scale(1.02); }
+      100% { transform: translate3d(10px, -10px, 0) scale(1.04); }
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    /* Header / top bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 2px solid rgba(244, 114, 182, 0.9);
+      box-shadow:
+        0 0 12px rgba(168, 85, 247, 0.8),
+        0 0 30px rgba(236, 72, 153, 0.9);
+      object-fit: cover;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-tag {
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .top-right a {
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Hero section */
+    .hero {
+      border-radius: 18px;
+      padding: 26px 20px 28px;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9)),
+        radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.35), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow:
+        0 20px 40px rgba(15, 23, 42, 0.9),
+        0 0 40px rgba(168, 85, 247, 0.45);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-left {
+      flex: 1 1 260px;
+      text-align: left;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #a855f7;
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      font-size: 34px;
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      max-width: 420px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.25), transparent 55%);
+    }
+
+    .hero-cta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
     }
 
     .btn-subscribe {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 15px 30px;
-      background: #ff0000;
-      font-size: 20px;
-      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #f97316, #ef4444);
       color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: none;
+      box-shadow:
+        0 0 18px rgba(239, 68, 68, 0.9),
+        0 0 40px rgba(236, 72, 153, 0.7);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
     }
 
     .btn-subscribe:hover {
-      background: #cc0000;
+      transform: translateY(-1px) scale(1.02);
+      filter: brightness(1.05);
+      box-shadow:
+        0 0 25px rgba(239, 68, 68, 1),
+        0 0 55px rgba(168, 85, 247, 0.9);
     }
 
-    .section {
-      padding: 50px 20px;
+    .btn-subscribe span.icon {
+      font-size: 17px;
     }
 
-    iframe {
-      width: 90%;
-      height: 500px;
+    .hero-meta {
+      font-size: 11px;
+      opacity: 0.75;
+    }
+
+    .hero-right {
+      flex: 0 0 220px;
+      text-align: center;
+    }
+
+    .hero-right-inner {
+      border-radius: 999px;
+      padding: 6px;
+      background:
+        conic-gradient(from 180deg, rgba(168, 85, 247, 0.9), rgba(236, 72, 153, 0.7), rgba(56, 189, 248, 0.7), rgba(168, 85, 247, 0.9));
+      box-shadow:
+        0 0 30px rgba(168, 85, 247, 0.9),
+        0 0 60px rgba(236, 72, 153, 0.8);
+      position: relative;
+    }
+
+    .hero-right-inner::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.55);
+      pointer-events: none;
+    }
+
+    .hero-avatar-wrap {
+      background: radial-gradient(circle at 30% 0, #0f172a, #020617);
+      border-radius: 999px;
+      padding: 10px;
+    }
+
+    .hero-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 3px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-right-text {
+      font-size: 11px;
+      margin-top: 10px;
+      opacity: 0.8;
+    }
+
+    /* Section title */
+    .section-title {
+      margin-top: 36px;
+      margin-bottom: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      opacity: 0.7;
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    /* Player and grid */
+    .video-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .video-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .player-card {
+      border-radius: 16px;
+      padding: 10px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.85);
+    }
+
+    #main-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
       border: none;
+      border-radius: 12px;
+      background: #020617;
+    }
+
+    .now-playing-title {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .now-playing-meta {
+      margin-top: 3px;
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    /* Video grid */
+    .video-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 420px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .video-card {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 10px;
+      padding: 8px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.2), rgba(15, 23, 42, 0.98));
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease, opacity 0.12s ease;
+      opacity: 0.88;
+    }
+
+    .video-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(236, 72, 153, 0.8);
+      box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.9),
+        0 0 22px rgba(168, 85, 247, 0.7);
+      opacity: 1;
+      background: radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.35), rgba(15, 23, 42, 1));
+    }
+
+    .video-card.active {
+      border-color: rgba(52, 211, 153, 0.8);
+      box-shadow:
+        0 0 18px rgba(52, 211, 153, 0.8),
+        0 0 30px rgba(168, 85, 247, 0.6);
+      opacity: 1;
+    }
+
+    .video-thumb-wrap {
+      position: relative;
       border-radius: 10px;
-      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .video-thumb {
+      width: 100%;
+      display: block;
+    }
+
+    .thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0) 0, rgba(15, 23, 42, 0.9) 100%);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.12s ease;
+    }
+
+    .video-card:hover .thumb-overlay {
+      opacity: 1;
+    }
+
+    .play-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .play-pill span.icon {
+      font-size: 14px;
+    }
+
+    .video-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .video-title {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .video-meta {
+      font-size: 11px;
+      opacity: 0.75;
+    }
+
+    .error-message {
+      margin-top: 12px;
+      color: #fca5a5;
+      font-size: 12px;
+    }
+
+    /* About section */
+    .about {
+      margin-top: 42px;
+      border-radius: 16px;
+      padding: 18px 16px 22px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.9);
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 800px) {
+      .about {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .about-text {
+      text-align: left;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .about-text p + p {
+      margin-top: 8px;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .about-tag {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .about-links {
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      margin-bottom: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at 0 0, rgba(236, 72, 153, 0.2), rgba(15, 23, 42, 0.98));
+      font-size: 12px;
+    }
+
+    .link-pill span.icon {
+      font-size: 14px;
     }
 
     footer {
-      margin-top: 50px;
-      padding: 20px;
-      background: #111;
-      font-size: 14px;
-      opacity: 0.7;
+      margin-top: 28px;
+      font-size: 11px;
+      text-align: center;
+      opacity: 0.6;
     }
   </style>
 </head>
 
 <body>
+  <div class="bg-glow"></div>
 
-  <header>
-    <h1>Granite Gaming Live Official</h1>
-    <p>Live streams • Gaming • BGMI • Tutorials • Emulator Configs</p>
+  <div class="page">
+    <!-- Top bar -->
+    <div class="top-bar">
+      <div class="top-left">
+        <!-- Your logo file: logo.png in same folder as index.html -->
+        <img src="logo.png" alt="Granite Gaming Logo" class="logo">
+        <div class="brand-text">
+          <div class="brand-name">Granite Gaming</div>
+          <div class="brand-tag">@granitegamingliveofficial</div>
+        </div>
+      </div>
+      <div class="top-right">
+        <a href="https://www.youtube.com/@granitegamingliveofficial" target="_blank" rel="noopener">
+          OPEN CHANNEL ON YOUTUBE
+        </a>
+      </div>
+    </div>
 
-    <a class="btn-subscribe" 
-       href="https://www.youtube.com/@granitegamingliveofficial" target="_blank">
-      🔴 SUBSCRIBE NOW
-    </a>
-  </header>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-kicker">LIVE • BGMI • EMULATOR • TUTORIALS</div>
+        <h1 class="hero-title">Granite Gaming Live Official</h1>
+        <p class="hero-subtitle">
+          Watch high-intensity BGMI gameplay, emulator configs, and live streams.
+          Tune in, learn new tricks, and push your game to the next level. 💥
+        </p>
 
-  <div class="section">
-    <h2>🎮 Latest Videos</h2>
+        <div class="hero-badges">
+          <div class="badge">BGMI &amp; Emulator Focused</div>
+          <div class="badge">Custom Configs &amp; Tweaks</div>
+          <div class="badge">Live Chat With Viewers</div>
+        </div>
 
-    <!-- Embedded YT -->
-    <iframe src="https://www.youtube.com/embed?list=UULF6hx173NkZ5Ehy1ftJ6Y-ow" allowfullscreen></iframe>
-  </div>
+        <div class="hero-cta">
+          <a
+            href="https://www.youtube.com/@granitegamingliveofficial?sub_confirmation=1"
+            target="_blank"
+            rel="noopener"
+            class="btn-subscribe"
+          >
+            <span class="icon">🔴</span>
+            <span>Subscribe on YouTube</span>
+          </a>
+          <div class="hero-meta">Join the squad &amp; never miss a stream.</div>
+        </div>
+      </div>
 
-  <div class="section" style="background:#111;">
-    <h2>📌 About Granite Gaming</h2>
-    <p style="max-width:800px; margin:20px auto; font-size:18px;">
-      Welcome to Granite Gaming! I stream BGMI, emulator tips, tutorials, and gameplay content daily.
-      Join the community and support the channel by subscribing!
+      <div class="hero-right">
+        <div class="hero-right-inner">
+          <div class="hero-avatar-wrap">
+            <img src="logo.png" alt="Granite Gaming Avatar" class="hero-avatar">
+          </div>
+        </div>
+        <div class="hero-right-text">
+          Built for gamers who want smoother aim, cleaner visuals, and smarter plays.
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest videos -->
+    <h2 class="section-title">🎮 Latest Uploads</h2>
+    <p class="section-subtitle">
+      These are your <strong>6 most recent videos</strong> fetched live from YouTube using the official API.
+      Click any card to start playing it in the main player.
     </p>
+
+    <section class="video-layout">
+      <!-- Main player -->
+      <div class="player-card">
+        <iframe
+          id="main-player"
+          src=""
+          allowfullscreen
+          title="Granite Gaming Video Player"
+        ></iframe>
+        <div class="now-playing-title" id="now-title">Loading latest video…</div>
+        <div class="now-playing-meta" id="now-meta"></div>
+      </div>
+
+      <!-- Video list -->
+      <div>
+        <div id="video-grid" class="video-grid"></div>
+        <div id="error" class="error-message"></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+      <div class="about-text">
+        <h3 style="font-size:15px; margin-bottom:6px;">📌 About Granite Gaming</h3>
+        <p>
+          Granite Gaming is all about BGMI, emulator optimization, and real-talk gameplay.
+          From live ranked pushes to testing configs and sensitivity tweaks, everything is tuned for competitive fun.
+        </p>
+        <p>
+          Whether you’re here to learn, chill in chat, or grind with the squad,
+          you’re part of the Granite community the moment you hit subscribe. 💜
+        </p>
+
+        <div class="about-tags">
+          <span class="about-tag">BGMI</span>
+          <span class="about-tag">Emulator Tweaks</span>
+          <span class="about-tag">Live Streaming</span>
+          <span class="about-tag">Config Guides</span>
+          <span class="about-tag">PC &amp; Mobile</span>
+        </div>
+      </div>
+
+      <div class="about-links">
+        <h3 style="font-size:15px; margin-bottom:6px;">🌐 Connect with Granite</h3>
+
+        <a
+          href="https://www.youtube.com/@granitegamingliveofficial"
+          target="_blank"
+          rel="noopener"
+          class="link-pill"
+        >
+          <span class="icon">▶️</span>
+          <span>YouTube Channel</span>
+        </a>
+        <br>
+
+        <a
+          href="https://instagram.com/granite_gaming_2617"
+          target="_blank"
+          rel="noopener"
+          class="link-pill"
+        >
+          <span class="icon">📸</span>
+          <span>Instagram @granite_gaming_2617</span>
+        </a>
+
+        <p style="margin-top:10px; font-size:12px; opacity:0.8;">
+          Share this page with friends who love BGMI &amp; high-aim gameplay –
+          the more we are, the crazier the lobbies get. 😈
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Granite Gaming — All Rights Reserved
+    </footer>
   </div>
 
-  <footer>
-    © 2025 Granite Gaming — All Rights Reserved
-  </footer>
+  <!-- YouTube Data API logic -->
+  <script>
+    // Your YouTube Data API key (old key you told me to use)
+    const API_KEY = "AIzaSyC7ycK7o16iDpsNKtiDBhacnasPNuJFfts";
+    const CHANNEL_ID = "UC6hx173NkZ5Ehy1ftJ6Y-ow";
+    const MAX_RESULTS = 6;
 
+    const player = document.getElementById("main-player");
+    const grid = document.getElementById("video-grid");
+    const errorBox = document.getElementById("error");
+    const nowTitle = document.getElementById("now-title");
+    const nowMeta = document.getElementById("now-meta");
+
+    let currentActiveCard = null;
+
+    async function loadVideos() {
+      try {
+        const url =
+          "https://www.googleapis.com/youtube/v3/search" +
+          "?key=" + encodeURIComponent(API_KEY) +
+          "&channelId=" + encodeURIComponent(CHANNEL_ID) +
+          "&part=snippet,id" +
+          "&order=date" +
+          "&type=video" +
+          "&maxResults=" + MAX_RESULTS;
+
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error("HTTP error " + res.status);
+        }
+
+        const data = await res.json();
+
+        if (!data.items || data.items.length === 0) {
+          errorBox.textContent = "No videos found for this channel.";
+          return;
+        }
+
+        grid.innerHTML = "";
+        errorBox.textContent = "";
+
+        // Set first video as default
+        const first = data.items[0];
+        const firstId = first.id.videoId;
+        setMainVideo(firstId, first);
+
+        data.items.forEach((item, index) => {
+          const vidId = item.id.videoId;
+          const snippet = item.snippet;
+          const thumbUrl = (snippet.thumbnails.medium && snippet.thumbnails.medium.url) ||
+                           (snippet.thumbnails.default && snippet.thumbnails.default.url) ||
+                           "";
+          const title = snippet.title;
+          const publishedAt = new Date(snippet.publishedAt);
+          const dateStr = publishedAt.toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+          });
+
+          const card = document.createElement("div");
+          card.className = "video-card";
+          if (index === 0) {
+            card.classList.add("active");
+            currentActiveCard = card;
+          }
+
+          card.innerHTML = `
+            <div class="video-thumb-wrap">
+              <img class="video-thumb" src="${thumbUrl}" alt="${title}">
+              <div class="thumb-overlay">
+                <div class="play-pill">
+                  <span class="icon">▶</span>
+                  <span>Play</span>
+                </div>
+              </div>
+            </div>
+            <div class="video-info">
+              <div class="video-title">${title}</div>
+              <div class="video-meta">${dateStr}</div>
+            </div>
+          `;
+
+          card.addEventListener("click", () => {
+            setMainVideo(vidId, item);
+            if (currentActiveCard) {
+              currentActiveCard.classList.remove("active");
+            }
+            card.classList.add("active");
+            currentActiveCard = card;
+
+            if (window.innerWidth < 900) {
+              document.querySelector(".player-card").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+            }
+          });
+
+          grid.appendChild(card);
+        });
+      } catch (err) {
+        console.error(err);
+        errorBox.textContent =
+          "Failed to load videos. Check your API key, quota, and browser console for details.";
+      }
+    }
+
+    function setMainVideo(videoId, item) {
+      player.src = "https://www.youtube.com/embed/" + encodeURIComponent(videoId);
+      if (item && item.snippet) {
+        nowTitle.textContent = item.snippet.title || "Now Playing";
+        const publishedAt = new Date(item.snippet.publishedAt);
+        const dateStr = publishedAt.toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        });
+        nowMeta.textContent = "Uploaded: " + dateStr;
+      } else {
+        nowTitle.textContent = "Now Playing";
+        nowMeta.textContent = "";
+      }
+    }
+
+    loadVideos();
+  </script>
 </body>
 </html>
